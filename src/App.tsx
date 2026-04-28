@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { createBoard } from "./utils/board";
+import { createBoard, moveTiles } from "./utils/board";
 import type { Board as BoardType } from "./utils/board";
 import Board from "./components/Board";
 
 export default function App() {
-  const [board] = useState<BoardType>(createBoard(3, 4));
+  const [board, setBoard] = useState<BoardType>(createBoard(3, 4));
   
   function handleTileClick(row: number, col: number) {
-    console.log("clicked", row, col);
+    const newBoard = moveTiles(board, { row, col });
+    setBoard(newBoard);
   }
 
   return (
