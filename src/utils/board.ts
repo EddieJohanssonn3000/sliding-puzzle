@@ -86,3 +86,58 @@ export function moveTiles(
   
     return newBoard;
   }
+
+  export function isBoardSolved(board: Board): boolean {
+    let expectedNumber = 1;
+    
+    for (let r = 0; r < board.length; r++) {
+      for (let c = 0; c < board[0].length; c++) {
+        const tile = board[r][c];
+        
+        if (r === board.length - 1 && c === board[0].length - 1) {
+          return tile === null;
+        }
+        
+        if (tile !== expectedNumber) {
+          return false;
+        }
+        
+        expectedNumber++;
+      }
+    }
+    
+    return true;
+  }
+
+export function shuffleBoard(board: Board): Board {
+  let newBoard = board.map(row => [...row]);
+  const moves = 200; 
+  
+  let emptyPos: Position | null = null;
+
+  for (let r = 0; r < newBoard.length; r++) {
+    for (let c = 0; c < newBoard[0].length; c++) {
+      if (newBoard[r][c] === null) {
+        emptyPos = { row: r, col: c };
+      }
+    }
+  }
+  
+  for (let i = 0; i < moves; i++) {
+    const validMoves: Position[] = [];
+    
+    if (emptyPos!.row > 0) validMoves.push({ row: emptyPos!.row - 1, col: emptyPos!.col });
+    if (emptyPos!.row < newBoard.length - 1) validMoves.push({ row: emptyPos!.row + 1, col: emptyPos!.col });
+    if (emptyPos!.col > 0) validMoves.push({ row: emptyPos!.row, col: emptyPos!.col - 1 });
+    if (emptyPos!.col < newBoard[0].length - 1) validMoves.push({ row: emptyPos!.row, col: emptyPos!.col + 1 });
+    
+    const randomMove = validMoves[Math.floor(Math.random() * validMoves.length)];
+    
+    [newBoard[emptyPos!.row][emptyPos!.col], newBoard[randomMove.row][randomMove.col]] = 
+    [newBoard[randomMove.row][randomMove.col], newBoard[emptyPos!.row][emptyPos!.col]];
+    
+    emptyPos = randomMove;
+  }
+  
+  return newBoard;
+}
