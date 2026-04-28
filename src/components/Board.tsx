@@ -8,15 +8,21 @@ type Props = {
 
 export default function Board({ board, onTileClick }: Props) {
     return (
-        <div className={styles.board}
+      <div
+        className={styles.board}
         style={{
-            gridTemplateColumns: `repeat(${board[0].length}, 80px)`
-          }}>
-            {board.map((row, r) => (
-                <div key={r}>
-                    {row.map((tile, c) => (<Tile key={c} value={tile} onClick={() => onTileClick(r, c)} />))}
-                </div>
-            ))}
-        </div>
-    )
-}
+          gridTemplateColumns: `repeat(${board[0].length}, 80px)`
+        }}
+      >
+        {board.map((row, r) =>
+          row.map((tile, c) => (
+            <Tile
+              key={`${r}-${c}`}
+              value={tile}
+              onClick={() => onTileClick(r, c)}
+            />
+          ))
+        )}
+      </div>
+    );
+  }

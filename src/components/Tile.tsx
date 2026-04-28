@@ -1,4 +1,5 @@
 import type { Tile as TileType } from "../utils/board";
+import styles from "./Tile.module.css";
 
 type Props = {
     value: TileType;
@@ -9,7 +10,10 @@ export default function Tile({ value, onClick }: Props) {
 const isEmpty = value === null;
 
     return (
-        <div onClick={!isEmpty ? onClick : undefined}>
+        <div  className={`${styles.tile} ${
+            isEmpty ? styles.empty : styles.filled
+          }`}
+        onClick={!isEmpty ? onClick : undefined}>
             {isEmpty === null ? "_" : value}
         </div>
     );
