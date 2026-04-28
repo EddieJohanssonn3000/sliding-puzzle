@@ -1,5 +1,6 @@
 import type { Board as BoardType } from "../utils/board";
-import Tile from "./Tile";import styles from "./Board.module.css";
+import Tile from "./Tile";
+import styles from "./Board.module.css";
 
 type Props = {
     board: BoardType;

@@ -14,7 +14,7 @@ const isEmpty = value === null;
             isEmpty ? styles.empty : styles.filled
           }`}
         onClick={!isEmpty ? onClick : undefined}>
-            {isEmpty === null ? "_" : value}
+            {isEmpty ? "_" : value}
         </div>
     );
 }
