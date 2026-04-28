@@ -31,9 +31,9 @@ export default function App() {
       <h1>Sliding Puzzle</h1>
       <Board board={board} onTileClick={handleTileClick} />
       <button onClick={handleShuffle} className="shuffle-btn">
-        Slumpa
+        Shuffle
       </button>
-      {isWon && <div className="win-message">🎉 Du vann!</div>}
+      {isWon && <div className="win-message">You made it!</div>}
     </div>
   )
 }

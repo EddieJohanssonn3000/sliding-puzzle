@@ -1,5 +1,17 @@
 .board {
-    display: grid;
-    gap: 8px;
-    justify-content: center;
+  display: grid;
+  gap: 8px;
+  justify-content: center;
+  padding: 20px;
+  border: 8px solid #8b6f47;
+
+  border-radius: 12px;
+}
+
+@media (max-width: 480px) {
+  .board {
+    gap: 4px;
+    padding: 12px;
+    border: 5px solid #8b6f47;
   }
+}
