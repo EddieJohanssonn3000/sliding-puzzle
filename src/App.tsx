@@ -29,6 +29,7 @@ export default function App() {
   return (
     <div className="container">
       <h1>Sliding Puzzle</h1>
+      <p>a codetest by Eddie Johansson</p>
       <Board board={board} onTileClick={handleTileClick} />
       <button onClick={handleShuffle} className="shuffle-btn">
         Shuffle
