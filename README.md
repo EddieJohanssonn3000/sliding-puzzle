@@ -1,73 +1,117 @@
-# React + TypeScript + Vite
+# Sliding Puzzle
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ett interaktivt 15-pusselpel byggt med React och TypeScript.
 
-Currently, two official plugins are available:
+## Om spelet
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Sliding Puzzle är en klassisk pusselspel där du måste ordna numrerade brickor från 1-14 i rätt ordning med ett tomt rum. Klicka på brickor intill det tomma rummet för att flytta dem.
 
-## React Compiler
+**Spelbräde:** 3 rader × 5 kolumner (15 brickor totalt)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Hur man spelar
+1. Klicka på en bricka intill det tomma rummet för att flytta den
+2. Ordna alla brickor i rätt ordning (1-14 + tomt rum)
+3. När pusslet är löst visas "You made it!" 
+4. Klicka "Shuffle" för att blanda om och spela igen
 
-## Expanding the ESLint configuration
+### Keyboard Navigation
+- **Tab** - Fokusera på brickor
+- **Enter/Space** - Aktivera fokuserad bricka
+- **Shuffle-knapp** - Fokuseras också med Tab
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Teknologi
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Framework:** React 18
+- **Språk:** TypeScript
+- **Styling:** CSS3 med CSS-variabler
+- **Font:** Google Fonts (Open Sans)
+- **Build tool:** Vite
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Projektstruktur
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── App.tsx              # Huvudkomponent med state-hantering
+├── App.css              # Huvudstyling med variabler
+├── index.css            # Global styling
+├── components/
+│   ├── Board.tsx        # Rendererar grid med tiles
+│   ├── Board.module.css # Board-styling
+│   ├── Tile.tsx         # Enskild bricka (med accessibility)
+│   └── Tile.module.css  # Tile-styling
+└── utils/
+    └── board.ts         # All pusselnlogik
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Funktioner
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Spelets logik**
+- `createBoard()` - Skapar initialt bräde (1-14 + null)
+- `shuffleBoard()` - Blandar brädet med 200 random drag
+- `moveTiles()` - Hanterar när användare klickar på bricka
+- `isBoardSolved()` - Checkar om pusslet är löst
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Responsive Design**
+- Desktop (1024px+)
+- Tablet (600-768px)
+- Mobile (< 480px)
+
+**Accessibility**
+- Keyboard navigation (Tab, Enter, Space)
+
+## Installation & Körning
+
+```bash
+# 1. Clona repot
+git clone https://github.com/EddieJohanssonn3000/sliding-puzzle.git
+
+# 2. Navigera in i mappen
+cd sliding-puzzle
+
+# 3. Installera dependencies
+npm install
+
+# 4. Starta dev-servern
+npm run dev
 ```
+
+Öppna `http://localhost:5173` i din webbläsare.
+
+## Implementeringstid
+
+**Totalt:** ~15 timmar
+
+### Tidsfördelning
+Utspritt på fem dagar tog det ungefär 15 timmar. 
+
+## Utmaningar & Lösningar
+
+### 1. Shuffle-algoritmen
+**Utmaning:** Säkerställa att det shufflade pusslet är lösbart
+**Lösning:** Använd 200 random giltiga drag istället för randomiserade positioner
+
+### 2. Responsiv grid-layout
+**Utmaning:** Tiles skulle inte centreras på mobil med fasta px-värden
+**Lösning:** Använde `repeat(${board[0].length}, minmax(0, 1fr))` för flexibel skalning
+
+### 3. TypeScript - Helt nytt språk
+**Utmaning:** TypeScript var helt nytt för mig (började för bara en vecka sedan i skolan). Att förstå types, interfaces och hur man applicerar dem på ett verkligt projekt var den största utmaningen.
+**Lösning:** 
+- Började med enkel typing (`useState<BoardType>`)
+- Gradvis lärt mig `type` och `interface` för mer komplexare strukturer
+- Letade upp dokumentation när jag var osäker
+
+## Design Choices
+
+- **Färgschema:** Brun/beige för träutseende som påminner klassiska pusselspel
+- **CSS-variabler:** För enkel underhållning
+- **Mobile-first:** Layouten fungerar bra från mobil → desktop
+
+## Anteckningar
+
+Detta var mitt första riktiga React-projekt med TypeScript, vilket gjorde det till en bra utmaning. TypeScript började vi bara med för en vecka sedan i skolan, så det var mycket nytt att tillämpa på ett verkligt projekt.
+
+---
+
+**Utvecklare:** Eddie Johansson  
+**Datum:** April 2026

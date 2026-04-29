@@ -19,7 +19,6 @@
 .filled:hover,
 .filled:focus {
   background: var(--primary-dark);
-  outline: none;
 }
 
 .filled:focus {
