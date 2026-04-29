@@ -4,9 +4,12 @@ import type { Board as BoardType } from "./utils/board";
 import Board from "./components/Board";
 import "./App.css";
 
+const ROWS = 3;
+const COLS = 5;
+
 export default function App() {
   const [board, setBoard] = useState<BoardType>(() => 
-    shuffleBoard(createBoard(3, 5))
+    shuffleBoard(createBoard(ROWS, COLS))
   );
   const [isWon, setIsWon] = useState(false);
   
@@ -22,7 +25,7 @@ export default function App() {
   }
 
   function handleShuffle() {
-    setBoard(shuffleBoard(createBoard(3, 5)));
+    setBoard(shuffleBoard(createBoard(ROWS, COLS)));
     setIsWon(false);
   }
 
