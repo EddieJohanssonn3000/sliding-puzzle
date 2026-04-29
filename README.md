@@ -23,7 +23,7 @@ Sliding Puzzle är en klassisk pusselspel där du måste ordna numrerade brickor
 
 - **Framework:** React 18
 - **Språk:** TypeScript
-- **Styling:** CSS3 med CSS-variabler
+- **Styling:** CSS-moduler + CSS-variabler
 - **Font:** Google Fonts (Open Sans)
 - **Build tool:** Vite
 
@@ -97,9 +97,8 @@ Utspritt på fem dagar tog det ungefär 15 timmar.
 ### 3. TypeScript - Helt nytt språk
 **Utmaning:** TypeScript var helt nytt för mig (började för bara en vecka sedan i skolan). Att förstå types, interfaces och hur man applicerar dem på ett verkligt projekt var den största utmaningen.
 **Lösning:** 
-- Började med enkel typing (`useState<BoardType>`)
-- Gradvis lärt mig `type` och `interface` för mer komplexare strukturer
-- Letade upp dokumentation när jag var osäker
+- Gradvis lärt mig om språket
+- Letade upp dokumentation och tog hjälp när jag var osäker
 
 ## Design Choices
 
@@ -109,7 +108,7 @@ Utspritt på fem dagar tog det ungefär 15 timmar.
 
 ## Anteckningar
 
-Detta var mitt första riktiga React-projekt med TypeScript, vilket gjorde det till en bra utmaning. TypeScript började vi bara med för en vecka sedan i skolan, så det var mycket nytt att tillämpa på ett verkligt projekt.
+Detta var mitt första riktiga React-projekt med TypeScript, vilket gjorde det till en bra utmaning. TypeScript började vi bara med för en vecka sedan i skolan, så det var mycket nytt att tillämpa på ett verkligt projekt. Hoppas ni är nöjda!
 
 ---
 
