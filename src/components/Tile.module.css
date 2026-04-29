@@ -9,14 +9,21 @@
   cursor: pointer;
   font-weight: 600;
   border: 2px solid var(--text);
+  outline: none;
 }
 
 .filled {
   background: var(--primary);
 }
 
-.filled:hover {
+.filled:hover,
+.filled:focus {
   background: var(--primary-dark);
+  outline: none;
+}
+
+.filled:focus {
+  box-shadow: 0 0 0 1px var(--text);
 }
 
 @media (max-width: 480px) {

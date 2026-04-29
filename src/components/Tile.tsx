@@ -9,12 +9,23 @@ type Props = {
 export default function Tile({ value, onClick }: Props) {
 const isEmpty = value === null;
 
+const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (!isEmpty && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      onClick();
+    }
+  };
+
     return (
-        <div  className={`${styles.tile} ${
-            isEmpty ? styles.empty : styles.filled
-          }`}
-        onClick={!isEmpty ? onClick : undefined}>
-            {isEmpty ? "_" : value}
-        </div>
+        <div
+        className={`${styles.tile} ${isEmpty ? styles.empty : styles.filled}`}
+        onClick={!isEmpty ? onClick : undefined}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={isEmpty ? -1 : 0}
+        aria-label={isEmpty ? "Empty" : `Tile ${value}`}
+      >
+        {isEmpty ? "-" : value}
+      </div>
     );
 }

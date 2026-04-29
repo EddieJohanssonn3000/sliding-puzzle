@@ -1,6 +1,6 @@
 :root {
   --primary: #c19a6b;
-  --primary-dark: #816849;
+  --primary-dark: #9a7d58;
   --text: #333;
   --spacing-lg: 40px;
   --spacing-md: 30px;
@@ -45,8 +45,14 @@ p {
   font-weight: 600;
 }
 
-.shuffle-btn:hover {
+.shuffle-btn:hover,
+.shuffle-btn:focus {
   background: var(--primary-dark);
+  outline: none;
+}
+
+.shuffle-btn:focus {
+  box-shadow: 0 0 0 3px var(--text);
 }
 
 .win-message {
