@@ -10,7 +10,7 @@ export default function Tile({ value, onClick }: Props) {
 const isEmpty = value === null;
 
 const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!isEmpty && (e.key === "Enter" || e.key === " ")) {
+    if (!isEmpty && (e.key === "Enter" || e.key === " ")) { // Handle keyboard input
       e.preventDefault();
       onClick();
     }

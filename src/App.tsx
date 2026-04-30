@@ -4,14 +4,15 @@ import type { Board as BoardType } from "./utils/board";
 import Board from "./components/Board";
 import "./App.css";
 
-const ROWS = 3;
+
+const ROWS = 3; // Configuration - Change these values to adjust puzzle size
 const COLS = 5;
 
 export default function App() {
   const [board, setBoard] = useState<BoardType>(() => 
     shuffleBoard(createBoard(ROWS, COLS))
   );
-  const [isWon, setIsWon] = useState(false);
+  const [isWon, setIsWon] = useState(false); // Track if the puzzle has been solved
   
   function handleTileClick(row: number, col: number) {
     if (isWon) return;
@@ -25,7 +26,7 @@ export default function App() {
   }
 
   function handleShuffle() {
-    setBoard(shuffleBoard(createBoard(ROWS, COLS)));
+    setBoard(shuffleBoard(createBoard(ROWS, COLS))); // Shuffle the board and reset win state
     setIsWon(false);
   }
 

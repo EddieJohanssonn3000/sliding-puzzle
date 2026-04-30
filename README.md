@@ -1,55 +1,55 @@
 # Sliding Puzzle
 
-Ett interaktivt 15-pusselpel byggt med React och TypeScript.
+An interactive puzzle game built with React and TypeScript.
 
-## Om spelet
+## About the Game
 
-Sliding Puzzle är en klassisk pusselspel där du måste ordna numrerade brickor från 1-14 i rätt ordning med ett tomt rum. Klicka på brickor intill det tomma rummet för att flytta dem.
+Sliding Puzzle is a classic 15-puzzle game where you must arrange numbered tiles from 1-14 in the correct order with one empty space. Click tiles adjacent to the empty space to move them.
 
-**Spelbräde:** 3 rader × 5 kolumner (15 brickor totalt)
+**Board:** 3 rows × 5 columns (15 tiles total)
 
-### Hur man spelar
-1. Klicka på en bricka intill det tomma rummet för att flytta den
-2. Ordna alla brickor i rätt ordning (1-14 + tomt rum)
-3. När pusslet är löst visas "You made it!" 
-4. Klicka "Shuffle" för att blanda om och spela igen
+### How to Play
+1. Click on a tile adjacent to the empty space to move it
+2. Arrange all tiles in order (1-14 + empty space)
+3. When the puzzle is solved, "You made it!" appears
+4. Click "Shuffle" to remix and play again
 
 ### Keyboard Navigation
-- **Tab** - Fokusera på brickor
-- **Enter/Space** - Aktivera fokuserad bricka
-- **Shuffle-knapp** - Fokuseras också med Tab
+- **Tab** - Focus on tiles
+- **Enter/Space** - Activate focused tile
+- **Shuffle button** - Also focusable with Tab
 
-## Teknologi
+## Technology
 
 - **Framework:** React 18
-- **Språk:** TypeScript
-- **Styling:** CSS-moduler + CSS-variabler
+- **Language:** TypeScript
+- **Styling:** CSS Modules + CSS Variables
 - **Font:** Google Fonts (Open Sans)
 - **Build tool:** Vite
 
-## Projektstruktur
+## Project Structure
 
 ```
 src/
-├── App.tsx              # Huvudkomponent med state-hantering
-├── App.css              # Huvudstyling med variabler
+├── App.tsx              # Main component with state management
+├── App.css              # Main styling with variables
 ├── index.css            # Global styling
 ├── components/
-│   ├── Board.tsx        # Rendererar grid med tiles
-│   ├── Board.module.css # Board-styling
-│   ├── Tile.tsx         # Enskild bricka (med accessibility)
-│   └── Tile.module.css  # Tile-styling
+│   ├── Board.tsx        # Renders grid with tiles
+│   ├── Board.module.css # Board styling
+│   ├── Tile.tsx         # Individual tile (with accessibility)
+│   └── Tile.module.css  # Tile styling
 └── utils/
-    └── board.ts         # All pusselnlogik
+    └── board.ts         # All puzzle logic
 ```
 
-## Funktioner
+## Features
 
-**Spelets logik**
-- `createBoard()` - Skapar initialt bräde (1-14 + null)
-- `shuffleBoard()` - Blandar brädet med 200 random drag
-- `moveTiles()` - Hanterar när användare klickar på bricka
-- `isBoardSolved()` - Checkar om pusslet är löst
+**Game Logic**
+- `createBoard()` - Creates initial solved board (1-14 + null)
+- `shuffleBoard()` - Shuffles board with 200 random moves
+- `moveTiles()` - Handles tile movement when clicked
+- `isBoardSolved()` - Checks if puzzle is solved
 
 **Responsive Design**
 - Desktop (1024px+)
@@ -59,58 +59,66 @@ src/
 **Accessibility**
 - Keyboard navigation (Tab, Enter, Space)
 
-## Installation & Körning
+## Installation & Running
 
 ```bash
-# 1. Clona repot
+# 1. Clone the repository
 git clone https://github.com/EddieJohanssonn3000/sliding-puzzle.git
 
-# 2. Navigera in i mappen
+# 2. Navigate into the folder
 cd sliding-puzzle
 
-# 3. Installera dependencies
+# 3. Install dependencies
 npm install
 
-# 4. Starta dev-servern
+# 4. Start the dev server
 npm run dev
 ```
 
-Öppna `http://localhost:5173` i din webbläsare.
+Open `http://localhost:5173` in your browser.
 
-## Implementeringstid
+## Time Spent
 
-**Totalt:** ~15 timmar
+Spread over five days, approximately 15 hours total.
 
-### Tidsfördelning
-Utspritt på fem dagar tog det ungefär 15 timmar. 
+## Challenges & Solutions
 
-## Utmaningar & Lösningar
+### 1. Shuffle Algorithm
+**Challenge:** Ensure the shuffled puzzle is always solvable
+**Solution:** Use 200 random valid moves instead of random tile positions
 
-### 1. Shuffle-algoritmen
-**Utmaning:** Säkerställa att det shufflade pusslet är lösbart
-**Lösning:** Använd 200 random giltiga drag istället för randomiserade positioner
+### 2. Responsive Grid Layout
+**Challenge:** Tiles weren't centered on mobile with fixed pixel values
+**Solution:** Used `repeat(${board[0].length}, minmax(0, 1fr))` for flexible scaling
 
-### 2. Responsiv grid-layout
-**Utmaning:** Tiles skulle inte centreras på mobil med fasta px-värden
-**Lösning:** Använde `repeat(${board[0].length}, minmax(0, 1fr))` för flexibel skalning
+### 3. TypeScript - Brand New Language
+**Challenge:** TypeScript was completely new to me (started only a week ago in school). Understanding types, interfaces, and how to apply them to a real project was the biggest challenge.
+**Solution:**
+- Gradually learned the language
+- Looked up documentation and asked for help when unsure
 
-### 3. TypeScript - Helt nytt språk
-**Utmaning:** TypeScript var helt nytt för mig (började för bara en vecka sedan i skolan). Att förstå types, interfaces och hur man applicerar dem på ett verkligt projekt var den största utmaningen.
-**Lösning:** 
-- Gradvis lärt mig om språket
-- Letade upp dokumentation och tog hjälp när jag var osäker
+## Configuration
+
+You can easily change the puzzle size by modifying the constants in `App.tsx`:
+
+```typescript
+const ROWS = 3;
+const COLS = 5;  
+```
+
+Change these values and restart the server for a different puzzle size!
 
 ## Design Choices
 
-- **Färgschema:** Brun/beige för träutseende som påminner klassiska pusselspel
-- **CSS-variabler:** För enkel underhållning
-- **Mobile-first:** Layouten fungerar bra från mobil → desktop
+- **Color Scheme:** Brown/beige for a wooden appearance reminiscent of classic puzzles
+- **CSS Variables:** For easy maintenance and theme switching
+- **Mobile-first:** Layout works well from mobile → desktop
 
-## Anteckningar
+## Notes
 
-Detta var mitt första riktiga React-projekt med TypeScript, vilket gjorde det till en bra utmaning. TypeScript började vi bara med för en vecka sedan i skolan, så det var mycket nytt att tillämpa på ett verkligt projekt. Hoppas ni är nöjda!
+This was my first real React project with TypeScript, which made it a great challenge. We only started learning TypeScript a week ago in school, so it was very new to apply to a real project. I hope you're satisfied with the result!
 
 ---
 
-**Utvecklare:** Eddie Johansson  
-**Datum:** April 2026
+**Developer:** Eddie Johansson  
+**Date:** April 2026

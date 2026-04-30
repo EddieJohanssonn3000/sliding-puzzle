@@ -12,7 +12,7 @@ export default function Board({ board, onTileClick }: Props) {
       <div
         className={styles.board}
         style={{
-          gridTemplateColumns: `repeat(${board[0].length}, minmax(0, 1fr))`
+          gridTemplateColumns: `repeat(${board[0].length}, minmax(0, 1fr))` // Dynamically set grid columns based on puzzle width
         }}
       >
         {board.map((row, r) =>

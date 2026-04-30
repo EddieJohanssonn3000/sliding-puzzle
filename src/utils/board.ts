@@ -1,5 +1,5 @@
+// Type definitions
 export type Tile = number | null;
-
 export type Board = Tile[][];
 
 export type Position = {
@@ -33,7 +33,7 @@ export function moveTiles(
   ): Board {
     const newBoard = board.map(row => [...row]);
   
-    let empty: Position | null = null;
+    let empty: Position | null = null;   // Find the empty space
   
     for (let r = 0; r < board.length; r++) {
       for (let c = 0; c < board[0].length; c++) {
@@ -43,7 +43,7 @@ export function moveTiles(
       }
     }
   
-    if (!empty) return board;
+    if (!empty) return board; // If no empty space found, return unchanged board
   
     if (
       tilePos.row !== empty.row &&
@@ -52,8 +52,8 @@ export function moveTiles(
       return board;
     }
   
-    if (tilePos.row === empty.row) {
-      const row = tilePos.row;
+    if (tilePos.row === empty.row) { // Handle horizontal movement 
+      const row = tilePos.row; 
   
       if (tilePos.col < empty.col) {
         for (let c = empty.col; c > tilePos.col; c--) {
@@ -68,7 +68,7 @@ export function moveTiles(
       newBoard[row][tilePos.col] = null;
     }
   
-    if (tilePos.col === empty.col) {
+    if (tilePos.col === empty.col) {  // Handle vertical movement 
       const col = tilePos.col;
   
       if (tilePos.row < empty.row) {
@@ -81,7 +81,7 @@ export function moveTiles(
         }
       }
   
-      newBoard[tilePos.row][col] = null;
+      newBoard[tilePos.row][col] = null; // Place empty space where the tile was
     }
   
     return newBoard;
@@ -123,8 +123,9 @@ export function shuffleBoard(board: Board): Board {
     }
   }
   
+
   for (let i = 0; i < moves; i++) {
-    const validMoves: Position[] = [];
+    const validMoves: Position[] = []; // Find all tiles adjacent to the empty space
     
     if (emptyPos!.row > 0) validMoves.push({ row: emptyPos!.row - 1, col: emptyPos!.col });
     if (emptyPos!.row < newBoard.length - 1) validMoves.push({ row: emptyPos!.row + 1, col: emptyPos!.col });
@@ -132,11 +133,12 @@ export function shuffleBoard(board: Board): Board {
     if (emptyPos!.col < newBoard[0].length - 1) validMoves.push({ row: emptyPos!.row, col: emptyPos!.col + 1 });
     
     const randomMove = validMoves[Math.floor(Math.random() * validMoves.length)];
-    
+
+    // Swap the empty space with the chosen tile
     [newBoard[emptyPos!.row][emptyPos!.col], newBoard[randomMove.row][randomMove.col]] = 
     [newBoard[randomMove.row][randomMove.col], newBoard[emptyPos!.row][emptyPos!.col]];
     
-    emptyPos = randomMove;
+    emptyPos = randomMove; // Update empty space position
   }
   
   return newBoard;
