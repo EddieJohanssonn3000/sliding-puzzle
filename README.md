@@ -116,7 +116,7 @@ Change these values and restart the server for a different puzzle size!
 
 ## Notes
 
-This was my first real React project with TypeScript, which made it a great challenge. We only started learning TypeScript a week ago in school, so it was very new to apply to a real project. I hope you're satisfied with the result!
+This was my first real React project with TypeScript, which made it a great challenge. We only started learning TypeScript a week ago in school, so it was very new to apply to a real project. In a bigger project, i would do the structure a bit different, with custom hooks for example. But for a project this size, i decided to keep it simple. I hope you're satisfied with the result!
 
 ---
 
