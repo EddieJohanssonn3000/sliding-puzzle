@@ -79,7 +79,7 @@ Open `http://localhost:5173` in your browser.
 
 ## Time Spent
 
-Spread over five days, approximately 15 hours total.
+Approximately 15 hours total.
 
 ## Challenges & Solutions
 
