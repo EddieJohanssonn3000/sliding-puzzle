@@ -121,4 +121,4 @@ This was my first real React project with TypeScript, which made it a great chal
 ---
 
 **Developer:** Eddie Johansson  
-**Date:** April 2026
+**Date:** May 2026
